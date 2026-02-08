@@ -39,10 +39,6 @@ for SKILL in "${SKILLS[@]}"; do
   echo
 done
 
-sudo npm install -g agent-browser
-agent-browser install
-agent-browser install --with-deps
-
 # ---------- summary ----------
 echo "======================================"
 echo "[32] OpenClaw skills installation done"
