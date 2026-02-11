@@ -145,6 +145,7 @@ ExecStart=${OPENCLAW_BIN} gateway \\
   --port ${GATEWAY_PORT} \\
   --auth token \\
   --verbose
+ExecStartPost=/bin/bash -c 'for i in {1..60}; do if command -v ss >/dev/null 2>&1 && ss -lnt | grep -q ":${GATEWAY_PORT} "; then break; fi; sleep 0.5; done; "${OPENCLAW_BIN}" browser --browser-profile "${BROWSER_DEFAULT_PROFILE}" start'
 
 Restart=always
 RestartSec=2

@@ -24,3 +24,13 @@ for pkg in "${BASE_PKGS[@]}"; do
   install_pkg_if_needed "$pkg"
 done
 
+# Seed git config if missing (safe defaults).
+if command -v git >/dev/null 2>&1; then
+  if [[ -z "$(git config --global --get user.name || true)" ]]; then
+    git config --global user.name "Ethan Xu"
+  fi
+  if [[ -z "$(git config --global --get user.email || true)" ]]; then
+    git config --global user.email "ethanxuyicheng@gmail.com"
+  fi
+fi
+
